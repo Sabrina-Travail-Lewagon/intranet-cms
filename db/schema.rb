@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_11_111358) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_11_112043) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_11_111358) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "meta_description"
+    t.integer "likes_count", default: 0
     t.index ["category_id"], name: "index_articles_on_category_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
@@ -71,6 +72,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_11_111358) do
     t.string "word"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "article_id", null: false
+    t.boolean "is_positive"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_likes_on_article_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -120,6 +131,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_11_111358) do
   add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "articles"
+  add_foreign_key "likes", "users"
   add_foreign_key "permissions", "roles"
   add_foreign_key "roles", "users"
 end
