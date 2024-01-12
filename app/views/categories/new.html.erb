@@ -1,2 +1,9 @@
-<h1>Categories#new</h1>
-<p>Find me in app/views/categories/new.html.erb</p>
+<div class="container">
+  <h1>Ajout d'une catégorie</h1>
+  <%= simple_form_for(@category) do |f| %>
+    <%= f.input :nom %>
+    <%= f.input :image, as: :file, label: "Choisir une image" %>
+    <%= f.input :background_color, as: :color, label: "Couleur de fond", input_html: { style: 'width: 100px;' } %>
+    <%= f.button :submit, "Créer", class: "btn btn-primary" %>
+  <% end %>
+</div>

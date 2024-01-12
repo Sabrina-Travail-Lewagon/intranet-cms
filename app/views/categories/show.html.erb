@@ -1,2 +1,14 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1><%= @category.nom %></h1>
+    <p>Image :
+      <% if @category.image.attached? %>
+        <%= image_tag @category.image %>
+      <% end %>
+    </p>
+    <p>
+      Couleur : <%= @category.background_color %>
+    </p>
+    <%= link_to "Retour", categories_path %>
+  </div>
+</div>
