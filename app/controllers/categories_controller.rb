@@ -1,10 +1,10 @@
 class CategoriesController < ApplicationController
+  before_action :find_category, only: [:show, :edit, :update, :destroy]
   def index
     @categories = Category.all
   end
 
   def show
-    @category = Category.find(params[:id])
   end
 
   def new
@@ -21,11 +21,9 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
     if @category.update(category_params)
       redirect_to categories_path, notice: "Catégorie a été mis à jour."
     else
@@ -33,7 +31,20 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def destroy
+    # On récupère l'id avec before_action
+    # On supprime l'enregistrement avec l'id dans la BdD
+    @category.destroy
+    # On redirige vers la page index
+    redirect_to categories_path, status: :see_other, :notice => "Catégorie supprimée!"
+  end
+
   private
+
+  def find_category
+    @category = Category.find(params[:id])
+  end
+
   def category_params
     params.require(:category).permit(:nom, :image, :background_color)
   end
