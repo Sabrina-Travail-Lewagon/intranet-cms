@@ -1,2 +1,15 @@
-<h1>Categories#edit</h1>
-<p>Find me in app/views/categories/edit.html.erb</p>
+<div class="container">
+  <h1>Modification d'une catégorie</h1>
+  <%= simple_form_for(@category) do |f| %>
+    <%= f.input :nom %>
+
+    <% if @category.image.attached? %>
+      <p>Image actuelle :</p>
+      <%= image_tag @category.image %>
+    <% end %>
+
+    <%= f.input :image, as: :file, label: "Choisir une image" %>
+    <%= f.input :background_color, as: :color, label: "Couleur de fond", input_html: { style: 'width: 100px;' } %>
+    <%= f.button :submit, "Mettre à jour", class: "btn btn-primary" %>
+  <% end %>
+</div>

@@ -1,16 +1,22 @@
-
 <div class="container">
   <h1>Liste des catégories</h1>
+  <%# Lien vers la vue new pour créer une catégorie %>
   <p><%= link_to "Créer", new_category_path %></p>
   <div class="row">
     <table class="table liste-categories table-striped table-bordered">
       <th>Nom</th>
       <th>Détail</th>
+      <th>Modifier</th>
       <% @categories.each do |category| %>
       <tr>
         <td><%= category.nom %></td>
         <td>
+        <%# Lien vers la vue show pour voir le détail d'une catégorie %>
           <%= link_to "Voir", category_path(category) %>
+        </td>
+        <td>
+        <%# Lien vers la vue edit pour modifier une catégorie %>
+          <%= link_to "Modifier", edit_category_path(category) %>
         </td>
       </tr>
       <% end %>
