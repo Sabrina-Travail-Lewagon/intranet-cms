@@ -1,0 +1,24 @@
+height: 500
+toolbar:
+  - bold italic backcolor | link | undo redo | alignleft aligncenter alignright alignjustify | forecolor backcolor | bullist numlist outdent indent | table | removeformat | uploadimage | code
+plugins:
+  - table
+  - fullscreen
+  - image
+  - code
+  - searchreplace
+  - wordcount
+  - visualblocks
+  - visualchars
+  - link
+  - charmap
+  - directionality
+  - nonbreaking
+  - media
+  - advlist
+  - autolink
+  - lists
+  - paste
+  - anchor
+  - insertdatetime
+images_upload_url: '/uploader/image'
