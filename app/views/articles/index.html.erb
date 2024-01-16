@@ -1,2 +1,33 @@
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
+<div class="container">
+  <h1>Liste des articles</h1>
+  <%# Lien vers la vue new pour créer un article %>
+  <p><%= link_to "Créer", new_article_path %></p>
+  <div class="row">
+    <table class="table liste-articles table-striped table-bordered">
+      <th>Nom</th>
+      <th>Détail</th>
+      <th>Modifier</th>
+      <th>Supprimer</th>
+      <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td>
+        <%# Lien vers la vue show pour voir le détail d'un article %>
+          <%= link_to "Voir", article_path(article) %>
+        </td>
+        <td>
+        <%# Lien vers la vue edit pour modifier un article %>
+          <%= link_to "Modifier", edit_article_path(article) %>
+        </td>
+        <td>
+        <%# Lien pour supprimer un article %>
+          <%= link_to article_path(article),
+            data: {turbo_method: :delete, turbo_confirm: "Etes vous sure ?", :method=>'delete'} do %>
+            <i class="fa-solid fa-trash-can me-3 text-danger"></i>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

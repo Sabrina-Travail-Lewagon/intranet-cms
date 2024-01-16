@@ -1,2 +1,32 @@
 <h1>Articles#edit</h1>
 <p>Find me in app/views/articles/edit.html.erb</p>
+<div class="container">
+  <h1>Création d'un article</h1>
+  <%= simple_form_for(@article) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :title, label: "Titre" %>
+    <%= f.input :category_id,
+                      required: true,
+                      autofocus: true,
+                      collection: @categories,
+                      label_method: :nom,
+                      value_method: :id,
+                      include_blank: 'Sélectionnez une catégorie',
+                      label: "Catégories" %>
+    <%= f.input :content, label: "Contenu" %>
+    <% if @article.images.attached? %>
+      Images actuelles : <br>
+      <% @article.images.each do |image| %>
+            <%= image_tag image %>
+          <% end %>
+    <% end %>
+    <%= f.input :images,
+                      as: :file,
+                      label: "Choisir des images",
+                      input_html: {
+                        multiple: true
+                      }
+          %>
+    <%= f.button :submit, "Modifier", class: "btn btn-primary" %>
+  <% end %>
+</div>

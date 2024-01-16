@@ -1,2 +1,26 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1>Articles#show</h1>
+    <p>Find me in app/views/articles/show.html.erb</p>
+    <div class="card">
+      <div class="article-title">
+        Titre : <%= @article.title %>
+      </div>
+      <div class="article-category">
+        Catégorie : <%= @article.category.nom %>
+      </div>
+      <div class="article-image">
+        <% if @article.images.attached? %>
+          <% @article.images.each do |image| %>
+            <%= image_tag image %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="article-content">
+        Contenu : <%= @article.content %>
+      </div>
+
+    </div>
+
+  </div>
+</div>
