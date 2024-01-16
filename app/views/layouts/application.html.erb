@@ -9,6 +9,8 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= tinymce_assets %>
+    <meta name="turbo-cache-control" content="no-cache">
+    <meta name="turbo-visit-control" content="reload">
   </head>
 
   <body>
