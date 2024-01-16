@@ -13,7 +13,9 @@
                       value_method: :id,
                       include_blank: 'Sélectionnez une catégorie',
                       label: "Catégories" %>
-    <%= f.input :content, label: "Contenu" %>
+    <%= f.label :content, 'Contenu' %>
+    <%= f.text_area :content, class: "tinymce", rows: 30, style: 'width: 100%' %>
+    <%= tinymce :default %>
     <% if @article.images.attached? %>
       Images actuelles : <br>
       <% @article.images.each do |image| %>
