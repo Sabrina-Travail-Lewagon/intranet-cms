@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get 'categories/index'
-  get 'categories/show'
-  get 'categories/new'
-  get 'categories/edit'
+  post 'uploader/image'
   devise_for :users
   root to: "pages#home"
   resources :articles
