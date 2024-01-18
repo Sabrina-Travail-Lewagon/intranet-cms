@@ -1,4 +1,5 @@
 class UploaderController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def image
     blob = ActiveStorage::Blob.create_and_upload!(
       io:           params[:file],

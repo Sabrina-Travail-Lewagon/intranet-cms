@@ -18,7 +18,6 @@ plugins:
   - advlist
   - autolink
   - lists
-  - paste
   - anchor
   - insertdatetime
 images_upload_url: '/uploader/image'
